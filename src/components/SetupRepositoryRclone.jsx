@@ -23,14 +23,14 @@ export class SetupRepositoryRclone extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "Rclone Remote Path", "remotePath", {
+          {RequiredField(this, "Caminho remoto do Rclone", "remotePath", {
             autoFocus: true,
-            placeholder: "enter <name-of-rclone-remote>:<path>",
+            placeholder: "digite <nome-do-remoto-rclone>:<caminho>",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Rclone Executable Path", "rcloneExe", {
-            placeholder: "enter path to rclone executable",
+          {OptionalField(this, "Caminho do executável do Rclone", "rcloneExe", {
+            placeholder: "digite o caminho do executável do rclone",
           })}
         </Row>
       </>

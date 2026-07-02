@@ -20,9 +20,9 @@ export class SetupRepositoryFilesystem extends Component {
   render() {
     return (
       <>
-        {RequiredDirectory(this, "Directory Path", "path", {
+        {RequiredDirectory(this, "Caminho da pasta", "path", {
           autoFocus: true,
-          placeholder: "enter directory path where you want to store repository files",
+          placeholder: "digite o caminho da pasta onde os arquivos do repositório serão guardados",
         })}
       </>
     );

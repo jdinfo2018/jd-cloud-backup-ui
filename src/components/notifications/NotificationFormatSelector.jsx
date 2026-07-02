@@ -6,7 +6,7 @@ import { stateProperty } from "../../forms";
 export function NotificationFormatSelector(component, name) {
   return (
     <Form.Group as={Col}>
-      <Form.Label className="required">Notification Format</Form.Label>
+      <Form.Label className="required">Formato da notificação</Form.Label>
       <Form.Control
         as="select"
         size="sm"
@@ -14,8 +14,8 @@ export function NotificationFormatSelector(component, name) {
         onChange={(e) => component.handleChange(e)}
         value={stateProperty(component, name)}
       >
-        <option value="txt">Plain Text Format</option>
-        <option value="html">HTML Format</option>
+        <option value="txt">Texto simples</option>
+        <option value="html">Formato HTML</option>
       </Form.Control>
     </Form.Group>
   );

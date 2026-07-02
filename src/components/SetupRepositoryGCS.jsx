@@ -23,23 +23,23 @@ export class SetupRepositoryGCS extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "GCS Bucket", "bucket", {
+          {RequiredField(this, "Bucket GCS", "bucket", {
             autoFocus: true,
-            placeholder: "enter bucket name",
+            placeholder: "digite o nome do bucket",
           })}
-          {OptionalField(this, "Object Name Prefix", "prefix", {
-            placeholder: "enter object name prefix or leave empty",
+          {OptionalField(this, "Prefixo do nome do objeto", "prefix", {
+            placeholder: "digite o prefixo do nome do objeto ou deixe vazio",
             type: "password",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Credentials File", "credentialsFile", {
-            placeholder: "enter name of credentials JSON file",
+          {OptionalField(this, "Arquivo de credenciais", "credentialsFile", {
+            placeholder: "digite o nome do arquivo JSON de credenciais",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Credentials JSON", "credentials", {
-            placeholder: "paste JSON credentials here",
+          {OptionalField(this, "Credenciais JSON", "credentials", {
+            placeholder: "cole aqui as credenciais JSON",
             as: "textarea",
             rows: 5,
           })}

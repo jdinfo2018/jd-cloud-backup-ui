@@ -28,35 +28,35 @@ export class SetupRepositoryS3 extends Component {
         <Row>
           {RequiredField(this, "Bucket", "bucket", {
             autoFocus: true,
-            placeholder: "enter bucket name",
+            placeholder: "digite o nome do bucket",
           })}
-          {RequiredField(this, "Server Endpoint", "endpoint", {
-            placeholder: "enter server address (e.g., s3.amazonaws.com)",
+          {RequiredField(this, "Endereço do servidor", "endpoint", {
+            placeholder: "digite o endereço do servidor (ex.: s3.amazonaws.com)",
           })}
-          {OptionalField(this, "Override Region", "region", {
-            placeholder: "enter specific region (e.g., us-west-1) or leave empty",
+          {OptionalField(this, "Sobrescrever região", "region", {
+            placeholder: "digite uma região específica (ex.: us-west-1) ou deixe vazio",
           })}
         </Row>
         <Row>
-          {RequiredBoolean(this, "Use HTTP connection (insecure)", "doNotUseTLS")}
-          {RequiredBoolean(this, "Do not verify TLS certificate", "doNotVerifyTLS")}
+          {RequiredBoolean(this, "Usar conexão HTTP (insegura)", "doNotUseTLS")}
+          {RequiredBoolean(this, "Não verificar o certificado TLS", "doNotVerifyTLS")}
         </Row>
         <Row>
-          {RequiredField(this, "Access Key ID", "accessKeyID", {
-            placeholder: "enter access key ID",
+          {RequiredField(this, "ID da chave de acesso", "accessKeyID", {
+            placeholder: "digite o ID da chave de acesso",
           })}
-          {RequiredField(this, "Secret Access Key", "secretAccessKey", {
-            placeholder: "enter secret access key",
+          {RequiredField(this, "Chave de acesso secreta", "secretAccessKey", {
+            placeholder: "digite a chave de acesso secreta",
             type: "password",
           })}
-          {OptionalField(this, "Session Token", "sessionToken", {
-            placeholder: "enter session token or leave empty",
+          {OptionalField(this, "Token de sessão", "sessionToken", {
+            placeholder: "digite o token de sessão ou deixe vazio",
             type: "password",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Object Name Prefix", "prefix", {
-            placeholder: "enter object name prefix or leave empty",
+          {OptionalField(this, "Prefixo do nome do objeto", "prefix", {
+            placeholder: "digite o prefixo do nome do objeto ou deixe vazio",
           })}
         </Row>
       </>

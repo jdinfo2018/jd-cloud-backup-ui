@@ -21,16 +21,16 @@ const notificationMethods = {
 };
 
 const severityOptions = [
-  { value: -100, label: "Verbose" },
-  { value: -10, label: "Success" },
-  { value: 0, label: "Report" },
-  { value: 10, label: "Warning" },
-  { value: 20, label: "Error" },
+  { value: -100, label: "Detalhado" },
+  { value: -10, label: "Sucesso" },
+  { value: 0, label: "Relatório" },
+  { value: 10, label: "Aviso" },
+  { value: 20, label: "Erro" },
 ];
 
 function severityName(severity) {
   let opt = severityOptions.find((o) => o.value === severity);
-  return opt ? opt.label : "Unknown";
+  return opt ? opt.label : "Desconhecido";
 }
 
 export class NotificationEditor extends Component {
@@ -68,7 +68,7 @@ export class NotificationEditor extends Component {
     }
 
     if (!ed.validate()) {
-      alert("Invalid configuration, please correct the form fields");
+      alert("Configuração inválida, corrija os campos do formulário");
       return null;
     }
 
@@ -92,7 +92,7 @@ export class NotificationEditor extends Component {
         })
         .catch((error) => {
           if (error.response.data.error) {
-            alert("Error adding notification profile: " + error.response.data.error);
+            alert("Erro ao adicionar o perfil de notificação: " + error.response.data.error);
           }
         });
     }
@@ -128,17 +128,17 @@ export class NotificationEditor extends Component {
     axios
       .post("/api/v1/testNotificationProfile", cfg)
       .then((_result) => {
-        alert("Notification sent, please make sure you have received it.");
+        alert("Notificação enviada, confira se você a recebeu.");
       })
       .catch((error) => {
         if (error.response.data.error) {
-          alert("Error sending notification: " + error.response.data.error);
+          alert("Erro ao enviar a notificação: " + error.response.data.error);
         }
       });
   }
 
   deleteProfile(profileName) {
-    if (!window.confirm("Are you sure you want to delete the profile: " + profileName + "?")) {
+    if (!window.confirm("Tem certeza de que deseja excluir o perfil: " + profileName + "?")) {
       return;
     }
 
@@ -149,7 +149,7 @@ export class NotificationEditor extends Component {
       })
       .catch((error) => {
         if (error.response.data.error) {
-          alert("Error deleting: " + error.response.data.error);
+          alert("Erro ao excluir: " + error.response.data.error);
         }
       });
   }
@@ -191,21 +191,21 @@ export class NotificationEditor extends Component {
     return (
       <>
         <Row>
-          <h4>{this.state.isNewProfile ? "New Notification Profile" : "Edit Notification Profile"}</h4>
+          <h4>{this.state.isNewProfile ? "Novo perfil de notificação" : "Editar perfil de notificação"}</h4>
         </Row>
         <Row>
           {RequiredField(
             this,
-            "Profile Name",
+            "Nome do perfil",
             "editedProfile.profile",
             {
-              placeholder: "Enter profile name",
+              placeholder: "Digite o nome do perfil",
               readOnly: !this.state.isNewProfile,
             },
-            "Unique name for this notification profile",
+            "Nome único para este perfil de notificação",
           )}
           <Form.Group as={Col}>
-            <Form.Label className="required">Minimum Severity</Form.Label>
+            <Form.Label className="required">Severidade mínima</Form.Label>
             <Form.Control
               as="select"
               size="sm"
@@ -219,7 +219,7 @@ export class NotificationEditor extends Component {
                 </option>
               ))}
             </Form.Control>
-            <Form.Text className="text-muted">Minimum severity required to use this notification profile</Form.Text>
+            <Form.Text className="text-muted">Severidade mínima para usar este perfil de notificação</Form.Text>
           </Form.Group>
         </Row>
         <Row>
@@ -230,18 +230,18 @@ export class NotificationEditor extends Component {
             <hr />
             {this.state.isNewProfile ? (
               <Button size="sm" onClick={() => this.saveNewProfile()}>
-                Create Profile
+                Criar perfil
               </Button>
             ) : (
               <Button size="sm" onClick={() => this.updateProfile()}>
-                Update Profile
+                Atualizar perfil
               </Button>
             )}
             <Button size="sm" variant="secondary" onClick={() => this.sendTestNotification(null)}>
-              Send Test Notification
+              Enviar notificação de teste
             </Button>
             <Button size="sm" variant="danger" onClick={() => this.setEditedProfile(null, false)}>
-              Cancel
+              Cancelar
             </Button>
           </Col>
         </Row>
@@ -257,10 +257,10 @@ export class NotificationEditor extends Component {
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Profile</th>
-                  <th>Method</th>
-                  <th>Minimum Severity</th>
-                  <th>Actions</th>
+                  <th>Perfil</th>
+                  <th>Método</th>
+                  <th>Severidade mínima</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -271,16 +271,16 @@ export class NotificationEditor extends Component {
                     <td>{severityName(p.minSeverity)}</td>
                     <td>
                       <Button size="sm" variant="success" onClick={() => this.setEditedProfile(p, false)}>
-                        Edit
+                        Editar
                       </Button>
                       <Button size="sm" onClick={() => this.duplicateProfile(p)}>
-                        Duplicate
+                        Duplicar
                       </Button>
                       <Button size="sm" variant="secondary" onClick={() => this.sendTestNotification(p)}>
-                        Send Test Notification
+                        Enviar notificação de teste
                       </Button>
                       <Button size="sm" onClick={() => this.deleteProfile(p.profile)} variant="danger">
-                        Delete
+                        Excluir
                       </Button>
                     </td>
                   </tr>
@@ -292,19 +292,19 @@ export class NotificationEditor extends Component {
           <Row>
             <p>
               <Badge bg="warning" text="dark">
-                Important
+                Importante
               </Badge>
-              &nbsp;You don&apos;t have any notification profiles defined.
+              &nbsp;Você ainda não tem nenhum perfil de notificação definido.
               <br />
               <br />
-              Click the button below to add a new profile to receive notifications from Kopia.
+              Clique no botão abaixo para adicionar um perfil e receber notificações do JD Cloud Backup.
             </p>
           </Row>
         )}
         <Row>
           <Dropdown>
             <Dropdown.Toggle size="sm" variant="primary" id="newProfileButton">
-              Create New Profile
+              Criar novo perfil
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {Object.keys(notificationMethods).map((k) => (

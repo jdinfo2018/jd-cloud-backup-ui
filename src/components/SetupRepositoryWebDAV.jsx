@@ -23,17 +23,17 @@ export class SetupRepositoryWebDAV extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "WebDAV Server URL", "url", {
+          {RequiredField(this, "URL do servidor WebDAV", "url", {
             autoFocus: true,
-            placeholder: "http[s]://server:port/path",
+            placeholder: "http[s]://servidor:porta/caminho",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Username", "username", {
-            placeholder: "enter username",
+          {OptionalField(this, "Usuário", "username", {
+            placeholder: "digite o usuário",
           })}
-          {OptionalField(this, "Password", "password", {
-            placeholder: "enter password",
+          {OptionalField(this, "Senha", "password", {
+            placeholder: "digite a senha",
             type: "password",
           })}
         </Row>

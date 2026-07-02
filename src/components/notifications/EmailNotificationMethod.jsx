@@ -31,33 +31,33 @@ export class EmailNotificationMethod extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "SMTP Server", "smtpServer", {
+          {RequiredField(this, "Servidor SMTP", "smtpServer", {
             autoFocus: true,
-            placeholder: "SMTP server DNS name, e.g. smtp.gmail.com",
+            placeholder: "nome DNS do servidor SMTP, ex.: smtp.gmail.com",
           })}
-          {RequiredNumberField(this, "SMTP Port", "smtpPort", {})}
+          {RequiredNumberField(this, "Porta SMTP", "smtpPort", {})}
         </Row>
         <Row>
-          {OptionalField(this, "SMTP Username", "smtpUsername", {
-            placeholder: "SMTP server username, typically the email address",
+          {OptionalField(this, "Usuário SMTP", "smtpUsername", {
+            placeholder: "usuário do servidor SMTP, normalmente o e-mail",
           })}
-          {OptionalField(this, "SMTP Password", "smtpPassword", {
-            placeholder: "SMTP server password",
+          {OptionalField(this, "Senha SMTP", "smtpPassword", {
+            placeholder: "senha do servidor SMTP",
             type: "password",
           })}
-          {OptionalField(this, "SMTP Identity (Optional)", "smtpIdentity", {
-            placeholder: "SMTP server identity (often empty)",
+          {OptionalField(this, "Identidade SMTP (opcional)", "smtpIdentity", {
+            placeholder: "identidade do servidor SMTP (normalmente vazio)",
           })}
         </Row>
         <Row>
-          {RequiredField(this, "Mail From", "from", {
-            placeholder: "sender email address",
+          {RequiredField(this, "Remetente", "from", {
+            placeholder: "e-mail do remetente",
           })}
-          {RequiredField(this, "Mail To", "to", {
-            placeholder: "reipient email addresses, comma-separated",
+          {RequiredField(this, "Destinatário", "to", {
+            placeholder: "e-mails dos destinatários, separados por vírgula",
           })}
-          {OptionalField(this, "CC", "cc", {
-            placeholder: "CC addresses (comma-separated)",
+          {OptionalField(this, "Cc", "cc", {
+            placeholder: "endereços em cópia (separados por vírgula)",
           })}
           {NotificationFormatSelector(this, "format")}
         </Row>

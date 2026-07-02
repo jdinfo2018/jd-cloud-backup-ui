@@ -24,27 +24,27 @@ export class SetupRepositoryAzure extends Component {
         <Row>
           {RequiredField(this, "Container", "container", {
             autoFocus: true,
-            placeholder: "enter container name",
+            placeholder: "digite o nome do container",
           })}
-          {OptionalField(this, "Object Name Prefix", "prefix", {
-            placeholder: "enter object name prefix or leave empty",
+          {OptionalField(this, "Prefixo do nome do objeto", "prefix", {
+            placeholder: "digite o prefixo do nome do objeto ou deixe vazio",
           })}
         </Row>
         <Row>
-          {RequiredField(this, "Storage Account", "storageAccount", {
-            placeholder: "enter storage account name",
+          {RequiredField(this, "Conta de armazenamento", "storageAccount", {
+            placeholder: "digite o nome da conta de armazenamento",
           })}
-          {OptionalField(this, "Access Key", "storageKey", {
-            placeholder: "enter secret access key",
+          {OptionalField(this, "Chave de acesso", "storageKey", {
+            placeholder: "digite a chave de acesso secreta",
             type: "password",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Azure Storage Domain", "storageDomain", {
-            placeholder: "enter storage domain or leave empty for default 'blob.core.windows.net'",
+          {OptionalField(this, "Domínio do Azure Storage", "storageDomain", {
+            placeholder: "digite o domínio ou deixe vazio para o padrão 'blob.core.windows.net'",
           })}
-          {OptionalField(this, "SAS Token", "sasToken", {
-            placeholder: "enter secret SAS Token",
+          {OptionalField(this, "Token SAS", "sasToken", {
+            placeholder: "digite o Token SAS secreto",
             type: "password",
           })}
         </Row>

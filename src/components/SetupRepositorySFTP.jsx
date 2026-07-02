@@ -61,43 +61,43 @@ export class SetupRepositorySFTP extends Component {
         <Row>
           {RequiredField(this, "Host", "host", {
             autoFocus: true,
-            placeholder: "ssh host name (e.g., example.com)",
+            placeholder: "nome do host SSH (ex.: example.com)",
           })}
-          {RequiredField(this, "User", "username", {
-            placeholder: "user name",
+          {RequiredField(this, "Usuário", "username", {
+            placeholder: "nome de usuário",
           })}
-          {OptionalNumberField(this, "Port", "port", {
-            placeholder: "port number (e.g., 22)",
+          {OptionalNumberField(this, "Porta", "port", {
+            placeholder: "número da porta (ex.: 22)",
           })}
         </Row>
         <Row>
-          {RequiredField(this, "Path", "path", {
-            placeholder: "enter remote path to repository, e.g., '/mnt/data/repository'",
+          {RequiredField(this, "Caminho", "path", {
+            placeholder: "digite o caminho remoto do repositório, ex.: '/mnt/data/repository'",
           })}
         </Row>
         {!this.state.externalSSH && (
           <>
             <Row>
-              {OptionalField(this, "Password", "password", {
+              {OptionalField(this, "Senha", "password", {
                 type: "password",
-                placeholder: "password",
+                placeholder: "senha",
               })}
             </Row>
             <Row>
-              {OptionalField(this, "Path to key file", "keyfile", {
-                placeholder: "enter path to the key file",
+              {OptionalField(this, "Caminho do arquivo de chave", "keyfile", {
+                placeholder: "digite o caminho do arquivo de chave",
               })}
-              {OptionalField(this, "Path to known_hosts File", "knownHostsFile", {
-                placeholder: "enter path to the known_hosts file",
+              {OptionalField(this, "Caminho do arquivo known_hosts", "knownHostsFile", {
+                placeholder: "digite o caminho do arquivo known_hosts",
               })}
             </Row>
             <Row>
               {OptionalField(
                 this,
-                "Key Data",
+                "Conteúdo da chave",
                 "keyData",
                 {
-                  placeholder: "paste contents of the key file",
+                  placeholder: "cole o conteúdo do arquivo de chave",
                   as: "textarea",
                   rows: 5,
                   isInvalid:
@@ -107,15 +107,15 @@ export class SetupRepositorySFTP extends Component {
                 },
                 null,
                 <>
-                  One of <b>Password</b>, <b>Key File</b> or <b>Key Data</b> is required.
+                  É obrigatório um entre <b>Senha</b>, <b>Arquivo de chave</b> ou <b>Conteúdo da chave</b>.
                 </>,
               )}
               {OptionalField(
                 this,
-                "Known Hosts Data",
+                "Conteúdo do known_hosts",
                 "knownHostsData",
                 {
-                  placeholder: "paste contents of the known_hosts file",
+                  placeholder: "cole o conteúdo do arquivo known_hosts",
                   as: "textarea",
                   rows: 5,
                   isInvalid:
@@ -125,7 +125,7 @@ export class SetupRepositorySFTP extends Component {
                 },
                 null,
                 <>
-                  Either <b>Known Hosts File</b> or <b>Known Hosts Data</b> is required, but not both.
+                  É obrigatório o <b>Arquivo known_hosts</b> ou o <b>Conteúdo do known_hosts</b>, mas não os dois.
                 </>,
               )}
             </Row>
@@ -134,18 +134,18 @@ export class SetupRepositorySFTP extends Component {
         )}
         {RequiredBoolean(
           this,
-          "Launch external password-less SSH command",
+          "Executar comando SSH externo sem senha",
           "externalSSH",
-          "By default Kopia connects to the server using internal SSH client which supports limited options. Alternatively it may launch external password-less SSH command, which supports additional options, but is generally less efficient than the built-in client.",
+          "Por padrão o JD Cloud Backup conecta ao servidor usando o cliente SSH interno, que tem opções limitadas. Como alternativa, pode executar um comando SSH externo sem senha, que suporta mais opções, mas em geral é menos eficiente que o cliente interno.",
         )}
         {this.state.externalSSH && (
           <>
             <Row>
-              {OptionalField(this, "SSH Command", "sshCommand", {
-                placeholder: "provide enter passwordless SSH command to execute (typically 'ssh')",
+              {OptionalField(this, "Comando SSH", "sshCommand", {
+                placeholder: "informe o comando SSH sem senha a executar (normalmente 'ssh')",
               })}
-              {OptionalField(this, "SSH Arguments", "sshArguments", {
-                placeholder: "enter SSH command arguments ('user@host -s sftp' will be appended automatically)",
+              {OptionalField(this, "Argumentos do SSH", "sshArguments", {
+                placeholder: "digite os argumentos do SSH ('user@host -s sftp' é anexado automaticamente)",
               })}
             </Row>
           </>

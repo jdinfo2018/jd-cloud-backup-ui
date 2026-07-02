@@ -23,23 +23,23 @@ export class SetupRepositoryB2 extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "B2 Bucket", "bucket", {
+          {RequiredField(this, "Bucket B2", "bucket", {
             autoFocus: true,
-            placeholder: "enter bucket name",
+            placeholder: "digite o nome do bucket",
           })}
         </Row>
         <Row>
-          {RequiredField(this, "Key ID", "keyId", {
-            placeholder: "enter application or account key ID",
+          {RequiredField(this, "ID da chave", "keyId", {
+            placeholder: "digite o ID da chave de aplicação ou da conta",
           })}
-          {RequiredField(this, "Key", "key", {
-            placeholder: "enter secret application or account key",
+          {RequiredField(this, "Chave", "key", {
+            placeholder: "digite a chave secreta de aplicação ou da conta",
             type: "password",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Object Name Prefix", "prefix", {
-            placeholder: "enter object name prefix or leave empty",
+          {OptionalField(this, "Prefixo do nome do objeto", "prefix", {
+            placeholder: "digite o prefixo do nome do objeto ou deixe vazio",
           })}
         </Row>
       </>

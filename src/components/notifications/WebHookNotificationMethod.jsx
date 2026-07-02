@@ -31,9 +31,9 @@ export class WebHookNotificationMethod extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "URL Endpoint", "endpoint", { autoFocus: true })}
+          {RequiredField(this, "URL do endpoint", "endpoint", { autoFocus: true })}
           <Form.Group as={Col}>
-            <Form.Label className="required">HTTP Method</Form.Label>
+            <Form.Label className="required">Método HTTP</Form.Label>
             <Form.Control
               as="select"
               size="sm"
@@ -50,10 +50,10 @@ export class WebHookNotificationMethod extends Component {
         <Row>
           {OptionalField(
             this,
-            "Additional Headers",
+            "Cabeçalhos adicionais",
             "headers",
             { as: "textarea", rows: 5 },
-            "Enter one header per line in the format 'Header: Value'.",
+            "Digite um cabeçalho por linha, no formato 'Cabeçalho: Valor'.",
           )}
         </Row>
       </>
