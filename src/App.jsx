@@ -116,38 +116,38 @@ export default class App extends Component {
           <UIPreferenceProvider initalValue={uiPrefs}>
             <Navbar expand="sm" variant="light">
               <Navbar.Brand href="/">
-                <img src="/kopia-flat.svg" className="App-logo" alt="logo" />
+                <img src="/jd-cloud-backup-logo.svg" className="App-logo" alt="logo" />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <span className="d-inline-block" data-toggle="tooltip" title="Repository is not connected">
+                  <span className="d-inline-block" data-toggle="tooltip" title="Repositório não conectado">
                     <NavLink
                       data-testid="tab-snapshots"
                       title=""
-                      data-title="Snapshots"
+                      data-title="Cópias"
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/snapshots"
                     >
                       Snapshots
                     </NavLink>
                   </span>
-                  <span className="d-inline-block" data-toggle="tooltip" title="Repository is not connected">
+                  <span className="d-inline-block" data-toggle="tooltip" title="Repositório não conectado">
                     <NavLink
                       data-testid="tab-policies"
                       title=""
-                      data-title="Policies"
+                      data-title="Políticas"
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/policies"
                     >
                       Policies
                     </NavLink>
                   </span>
-                  <span className="d-inline-block" data-toggle="tooltip" title="Repository is not connected">
+                  <span className="d-inline-block" data-toggle="tooltip" title="Repositório não conectado">
                     <NavLink
                       data-testid="tab-tasks"
                       title=""
-                      data-title="Tasks"
+                      data-title="Tarefas"
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/tasks"
                     >
@@ -155,12 +155,12 @@ export default class App extends Component {
                       <>{runningTaskCount > 0 && <>({runningTaskCount})</>}</>
                     </NavLink>
                   </span>
-                  <NavLink data-testid="tab-repo" data-title="Repository" className="nav-link" to="/repo">
+                  <NavLink data-testid="tab-repo" data-title="Repositório" className="nav-link" to="/repo">
                     Repository
                   </NavLink>
                   <NavLink
                     data-testid="tab-preferences"
-                    data-title="Preferences"
+                    data-title="Preferências"
                     className="nav-link"
                     to="/preferences"
                   >
