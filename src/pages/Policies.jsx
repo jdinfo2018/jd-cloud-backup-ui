@@ -18,12 +18,12 @@ import { redirect } from "../utils/uiutil";
 import { checkPolicyPath, policyEditorURL } from "../utils/policyutil";
 import PropTypes from "prop-types";
 
-const applicablePolicies = "Applicable Policies";
-const localPolicies = "Local Path Policies";
-const allPolicies = "All Policies";
-const globalPolicy = "Global Policy";
-const perUserPolicies = "Per-User Policies";
-const perHostPolicies = "Per-Host Policies";
+const applicablePolicies = "Políticas aplicáveis";
+const localPolicies = "Políticas por caminho local";
+const allPolicies = "Todas as políticas";
+const globalPolicy = "Política global";
+const perUserPolicies = "Políticas por usuário";
+const perHostPolicies = "Políticas por máquina";
 
 export class PoliciesInternal extends Component {
   constructor() {
@@ -197,7 +197,7 @@ export class PoliciesInternal extends Component {
       return <p>{error.message}</p>;
     }
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return <p>Carregando ...</p>;
     }
 
     let uniqueOwners = sources.reduce((a, d) => {
@@ -257,26 +257,26 @@ export class PoliciesInternal extends Component {
 
     const columns = [
       {
-        header: "Username",
+        header: "Usuário",
         width: 100,
         accessorFn: (x) => x.target.userName || "*",
       },
       {
-        header: "Host",
+        header: "Máquina",
         width: 100,
         accessorFn: (x) => x.target.host || "*",
       },
       {
-        header: "Path",
+        header: "Caminho",
         accessorFn: (x) => x.target.path || "*",
       },
       {
-        header: "Defined",
+        header: "Definida",
         cell: (x) => this.policySummary(x.row.original),
       },
       {
         id: "edit",
-        header: "Actions",
+        header: "Ações",
         width: 50,
         cell: (x) => (
           <Button
@@ -331,7 +331,7 @@ export class PoliciesInternal extends Component {
                     <Col>
                       {OptionalDirectory(this, null, "policyPath", {
                         autoFocus: true,
-                        placeholder: "enter directory to find or set policy",
+                        placeholder: "digite a pasta para achar ou definir a política",
                       })}
                     </Col>
                     <Col xs="auto">
@@ -341,7 +341,7 @@ export class PoliciesInternal extends Component {
                         type="submit"
                         onClick={this.editPolicyForPath}
                       >
-                        Set Policy
+                        Definir política
                       </Button>
                     </Col>
                   </>
@@ -355,15 +355,15 @@ export class PoliciesInternal extends Component {
 
         {policies.length > 0 ? (
           <div>
-            <p>Found {policies.length} policies matching criteria.</p>
+            <p>Encontradas {policies.length} políticas que atendem ao critério.</p>
             <KopiaTable data={policies} columns={columns} />
           </div>
         ) : this.state.selectedOwner === localPolicies && this.state.policyPath ? (
           <p>
-            No policy found for directory <code>{this.state.policyPath}</code>. Click <b>Set Policy</b> to define it.
+            Nenhuma política para a pasta <code>{this.state.policyPath}</code>. Clique em <b>Definir política</b> para criá-la.
           </p>
         ) : (
-          <p>No policies found.</p>
+          <p>Nenhuma política encontrada.</p>
         )}
         <CLIEquivalent command="policy list" />
       </>
