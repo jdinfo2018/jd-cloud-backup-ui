@@ -130,7 +130,7 @@ class SnapshotCreateInternal extends Component {
     e.preventDefault();
 
     if (!this.state.resolvedSource.path) {
-      alert("Must specify directory to snapshot.");
+      alert("É preciso informar a pasta para a cópia.");
       return;
     }
 
@@ -169,13 +169,13 @@ class SnapshotCreateInternal extends Component {
           <GoBackButton />
         </Form.Group>
         <br />
-        <h4>New Snapshot</h4>
+        <h4>Nova cópia</h4>
         <br />
         <Row>
           <Col>
             {RequiredDirectory(this, null, "path", {
               autoFocus: true,
-              placeholder: "enter path to snapshot",
+              placeholder: "digite o caminho da pasta a copiar",
             })}
           </Col>
           <Col xs="auto">
@@ -183,21 +183,21 @@ class SnapshotCreateInternal extends Component {
               data-testid="estimate-now"
               size="sm"
               disabled={!this.state.resolvedSource?.path}
-              title="Estimate"
+              title="Estimar"
               variant="secondary"
               onClick={this.estimate}
             >
-              Estimate
+              Estimar
             </Button>
             <Button
               data-testid="snapshot-now"
               size="sm"
               disabled={!this.state.resolvedSource?.path}
-              title="Snapshot Now"
+              title="Copiar agora"
               variant="primary"
               onClick={this.snapshotNow}
             >
-              Snapshot Now
+              Copiar agora
             </Button>
           </Col>
         </Row>

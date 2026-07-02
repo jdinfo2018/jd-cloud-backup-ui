@@ -89,7 +89,7 @@ export class SnapshotEstimationInternal extends Component {
     }
 
     if (task.status === "CANCELED") {
-      return "(Canceled)";
+      return "(Cancelado)";
     }
 
     return task.status;
@@ -103,7 +103,7 @@ export class SnapshotEstimationInternal extends Component {
     }
 
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return <p>Carregando ...</p>;
     }
 
     return (
@@ -112,18 +112,18 @@ export class SnapshotEstimationInternal extends Component {
           <Form.Text className="estimateResults">
             {this.taskStatusDescription(task)} Bytes:{" "}
             <b>{sizeDisplayName(task.counters["Bytes"]?.value, bytesStringBase2)}</b> (
-            <b>{sizeDisplayName(task.counters["Excluded Bytes"]?.value, bytesStringBase2)}</b> excluded) Files:{" "}
-            <b>{task.counters["Files"]?.value}</b> (<b>{task.counters["Excluded Files"]?.value}</b> excluded)
-            Directories: <b>{task.counters["Directories"]?.value}</b> (
-            <b>{task.counters["Excluded Directories"]?.value}</b> excluded) Errors:{" "}
-            <b>{task.counters["Errors"]?.value}</b> (<b>{task.counters["Ignored Errors"]?.value}</b> ignored)
+            <b>{sizeDisplayName(task.counters["Excluded Bytes"]?.value, bytesStringBase2)}</b> excluídos) Arquivos:{" "}
+            <b>{task.counters["Files"]?.value}</b> (<b>{task.counters["Excluded Files"]?.value}</b> excluídos)
+            Pastas: <b>{task.counters["Directories"]?.value}</b> (
+            <b>{task.counters["Excluded Directories"]?.value}</b> excluídas) Erros:{" "}
+            <b>{task.counters["Errors"]?.value}</b> (<b>{task.counters["Ignored Errors"]?.value}</b> ignorados)
           </Form.Text>
         )}
         {task.status === "RUNNING" && (
           <>
             &nbsp;
             <Button size="sm" variant="light" onClick={() => cancelTask(task.id)}>
-              <FontAwesomeIcon icon={faStopCircle} color="red" /> Cancel{" "}
+              <FontAwesomeIcon icon={faStopCircle} color="red" /> Cancelar{" "}
             </Button>
           </>
         )}

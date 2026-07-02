@@ -101,7 +101,7 @@ export default function KopiaTable({ columns, data }) {
       </>
       <>
         <Dropdown style={{ marginBottom: "1em" }}>
-          <Dropdown.Toggle size="sm">Page Size: {pageSize}</Dropdown.Toggle>
+          <Dropdown.Toggle size="sm">Itens por página: {pageSize}</Dropdown.Toggle>
           <Dropdown.Menu>
             {PAGE_SIZES.map((pageSize) => (
               <Dropdown.Item
@@ -112,7 +112,7 @@ export default function KopiaTable({ columns, data }) {
                   setPageSize(pageSize);
                 }}
               >
-                Page Size {pageSize}
+                {pageSize} por página
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
@@ -136,10 +136,10 @@ export default function KopiaTable({ columns, data }) {
                       title={
                         header.column.getCanSort()
                           ? header.column.getNextSortingOrder() === "asc"
-                            ? "Sort ascending"
+                            ? "Ordenar crescente"
                             : header.column.getNextSortingOrder() === "desc"
-                              ? "Sort descending"
-                              : "Clear sort"
+                              ? "Ordenar decrescente"
+                              : "Limpar ordenação"
                           : undefined
                       }
                     >

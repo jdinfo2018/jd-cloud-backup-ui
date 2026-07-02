@@ -143,18 +143,18 @@ export class Repository extends Component {
         <>
           <h4>
             <Spinner animation="border" variant="primary" size="sm" />
-            &nbsp;Initializing Repository...
+            &nbsp;Inicializando o repositório...
           </h4>
           {this.state.showLog ? (
             <>
               <Button size="sm" variant="light" onClick={() => this.setState({ showLog: false })}>
-                <FontAwesomeIcon icon={faChevronCircleUp} /> Hide Log
+                <FontAwesomeIcon icon={faChevronCircleUp} /> Ocultar registro
               </Button>
               <Logs taskID={this.state.status.initTaskID} />
             </>
           ) : (
             <Button size="sm" variant="light" onClick={() => this.setState({ showLog: true })}>
-              <FontAwesomeIcon icon={faChevronCircleDown} /> Show Log
+              <FontAwesomeIcon icon={faChevronCircleDown} /> Ver registro
             </Button>
           )}
           <hr />
@@ -162,10 +162,10 @@ export class Repository extends Component {
             size="sm"
             variant="danger"
             icon={faWindowClose}
-            title="Cancel"
+            title="Cancelar"
             onClick={() => cancelTask(this.state.status.initTaskID)}
           >
-            Cancel Connection
+            Cancelar conexão
           </Button>
         </>
       );
@@ -176,7 +176,7 @@ export class Repository extends Component {
         <>
           <p className="text-success mb-1">
             <FontAwesomeIcon icon={faCheck} style={{ marginRight: 4 }} />
-            <span>Connected To Repository</span>
+            <span>Conectado ao repositório</span>
           </p>
           <Form>
             <Row>
@@ -192,16 +192,16 @@ export class Repository extends Component {
                   />
                   &nbsp;
                   <Button data-testid="update-description" size="sm" onClick={this.updateDescription} type="button">
-                    Update Description
+                    Atualizar descrição
                   </Button>
                 </InputGroup>
-                <Form.Control.Feedback type="invalid">Description Is Required</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">A descrição é obrigatória</Form.Control.Feedback>
               </Form.Group>
             </Row>
             {this.state.status.readonly && (
               <Row>
                 <Badge pill variant="warning">
-                  Repository is read-only
+                  Repositório somente leitura
                 </Badge>
               </Row>
             )}
@@ -212,7 +212,7 @@ export class Repository extends Component {
               <>
                 <Row>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Server URL</Form.Label>
+                    <Form.Label className="required">URL do servidor</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.apiServerURL} />
                   </Form.Group>
                 </Row>
@@ -221,58 +221,58 @@ export class Repository extends Component {
               <>
                 <Row>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Config File</Form.Label>
+                    <Form.Label className="required">Arquivo de configuração</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.configFile} />
                   </Form.Group>
                 </Row>
                 <Row>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Provider</Form.Label>
+                    <Form.Label className="required">Provedor</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.storage} />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Encryption Algorithm</Form.Label>
+                    <Form.Label className="required">Algoritmo de criptografia</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.encryption} />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Hash Algorithm</Form.Label>
+                    <Form.Label className="required">Algoritmo de hash</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.hash} />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Splitter Algorithm</Form.Label>
+                    <Form.Label className="required">Algoritmo de divisão</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.splitter} />
                   </Form.Group>
                 </Row>
                 <Row>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Repository Format</Form.Label>
+                    <Form.Label className="required">Formato do repositório</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.formatVersion} />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Error Correction Overhead</Form.Label>
+                    <Form.Label className="required">Sobrecarga de correção de erros</Form.Label>
                     <Form.Control
                       readOnly
                       defaultValue={
                         this.state.status.eccOverheadPercent > 0
                           ? this.state.status.eccOverheadPercent + "%"
-                          : "Disabled"
+                          : "Desativado"
                       }
                     />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Error Correction Algorithm</Form.Label>
+                    <Form.Label className="required">Algoritmo de correção de erros</Form.Label>
                     <Form.Control readOnly defaultValue={this.state.status.ecc || "-"} />
                   </Form.Group>
                   <Form.Group as={Col}>
-                    <Form.Label className="required">Internal Compression</Form.Label>
-                    <Form.Control readOnly defaultValue={this.state.status.supportsContentCompression ? "yes" : "no"} />
+                    <Form.Label className="required">Compressão interna</Form.Label>
+                    <Form.Control readOnly defaultValue={this.state.status.supportsContentCompression ? "sim" : "não"} />
                   </Form.Group>
                 </Row>
               </>
             )}
             <Row>
               <Form.Group as={Col}>
-                <Form.Label className="required">Connected as:</Form.Label>
+                <Form.Label className="required">Conectado como:</Form.Label>
                 <Form.Control readOnly defaultValue={this.state.status.username + "@" + this.state.status.hostname} />
               </Form.Group>
             </Row>
@@ -282,7 +282,7 @@ export class Repository extends Component {
             <Row>
               <Col>
                 <Button data-testid="disconnect" size="sm" variant="danger" onClick={this.disconnect}>
-                  Disconnect
+                  Desconectar
                 </Button>
               </Col>
             </Row>

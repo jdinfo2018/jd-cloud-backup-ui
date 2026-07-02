@@ -40,14 +40,14 @@ export function CLIEquivalent(props) {
         <Button
           data-testid="show-cli-button"
           size="sm"
-          title="Click to show CLI equivalent"
+          title="Clique para ver o comando equivalente"
           variant="submit"
           onClick={() => setVisible(!visible)}
         >
           <FontAwesomeIcon size="sm" icon={faTerminal} />
         </Button>
         {visible && (
-          <Button size="sm" variant="success" title="Copy to clipboard" onClick={copyToClibopard}>
+          <Button size="sm" variant="success" title="Copiar para a área de transferência" onClick={copyToClibopard}>
             <FontAwesomeIcon size="sm" icon={faCopy} />
           </Button>
         )}

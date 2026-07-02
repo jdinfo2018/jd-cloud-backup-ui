@@ -89,31 +89,31 @@ class TaskInternal extends Component {
       case "SUCCESS":
         return (
           <Alert size="sm" variant="success">
-            Task succeeded after {dur}.
+            Tarefa concluída após {dur}.
           </Alert>
         );
 
       case "FAILED":
         return (
           <Alert variant="danger">
-            <b>Error:</b> {task.errorMessage}.
+            <b>Erro:</b> {task.errorMessage}.
           </Alert>
         );
 
       case "CANCELED":
-        return <Alert variant="warning">Task canceled.</Alert>;
+        return <Alert variant="warning">Tarefa cancelada.</Alert>;
 
       case "CANCELING":
         return (
           <Alert variant="primary">
-            <Spinner animation="border" variant="warning" size="sm" /> Canceling {dur}: {task.progressInfo}.
+            <Spinner animation="border" variant="warning" size="sm" /> Cancelando há {dur}: {task.progressInfo}.
           </Alert>
         );
 
       default:
         return (
           <Alert variant="primary">
-            <Spinner animation="border" variant="primary" size="sm" /> Running for {dur}: {task.progressInfo}.
+            <Spinner animation="border" variant="primary" size="sm" /> Em execução há {dur}: {task.progressInfo}.
           </Alert>
         );
     }
@@ -192,7 +192,7 @@ class TaskInternal extends Component {
     }
 
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return <p>Carregando ...</p>;
     }
 
     return (
@@ -206,7 +206,7 @@ class TaskInternal extends Component {
                   <>
                     &nbsp;
                     <Button size="sm" variant="danger" onClick={() => cancelTask(task.id)}>
-                      <FontAwesomeIcon icon={faStopCircle} /> Stop{" "}
+                      <FontAwesomeIcon icon={faStopCircle} /> Parar{" "}
                     </Button>
                   </>
                 )}
@@ -224,8 +224,8 @@ class TaskInternal extends Component {
               <Table bordered hover size="sm">
                 <thead>
                   <tr>
-                    <th>Counter</th>
-                    <th>Value</th>
+                    <th>Contador</th>
+                    <th>Valor</th>
                   </tr>
                 </thead>
                 <tbody>{this.sortedBadges(task.counters, bytesStringBase2)}</tbody>
@@ -236,20 +236,20 @@ class TaskInternal extends Component {
         <Row>
           <Col xs={6}>
             <Form.Group>
-              <Form.Label>Started</Form.Label>
+              <Form.Label>Iniciada</Form.Label>
               <Form.Control type="text" readOnly={true} value={new Date(task.startTime).toLocaleString()} />
             </Form.Group>
           </Col>
           <Col xs={6}>
             <Form.Group>
-              <Form.Label>Finished</Form.Label>
+              <Form.Label>Finalizada</Form.Label>
               <Form.Control type="text" readOnly={true} value={new Date(task.endTime).toLocaleString()} />
             </Form.Group>
           </Col>
         </Row>
         <Row>
           <Form.Group>
-            <Form.Label>Logs</Form.Label>
+            <Form.Label>Registros</Form.Label>
             <Logs taskID={this.taskID(this.props)} />
           </Form.Group>
         </Row>

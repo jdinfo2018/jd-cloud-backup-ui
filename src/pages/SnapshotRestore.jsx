@@ -98,7 +98,7 @@ export class SnapshotRestoreInternal extends Component {
         <p>
           <GoBackButton />
           <Link replace={true} to={"/tasks/" + this.state.restoreTask}>
-            Go To Restore Task
+            Ir para a tarefa de restauração
           </Link>
           .
         </p>
@@ -108,46 +108,46 @@ export class SnapshotRestoreInternal extends Component {
     return (
       <div className="padded-top">
         <GoBackButton />
-        &nbsp;<span className="page-title">Restore</span>
+        &nbsp;<span className="page-title">Restaurar</span>
         <hr />
         <Form onSubmit={this.start}>
           <Row>
             {RequiredField(
               this,
-              "Destination",
+              "Destino",
               "destination",
               {
                 autoFocus: true,
-                placeholder: "enter destination path",
+                placeholder: "digite o caminho de destino",
               },
-              "You can also restore to a .zip or .tar file by providing the appropriate extension.",
+              "Você também pode restaurar para um arquivo .zip ou .tar, informando a extensão apropriada.",
             )}
           </Row>
-          <Row>{RequiredBoolean(this, "Skip previously restored files and symlinks", "incremental")}</Row>
+          <Row>{RequiredBoolean(this, "Pular arquivos e atalhos já restaurados", "incremental")}</Row>
           <Row>
             {RequiredBoolean(
               this,
-              "Continue on Errors",
+              "Continuar mesmo com erros",
               "continueOnErrors",
-              "When a restore error occurs, attempt to continue instead of failing fast.",
+              "Se ocorrer um erro na restauração, tentar continuar em vez de parar na hora.",
             )}
           </Row>
-          <Row>{RequiredBoolean(this, "Restore File Ownership", "restoreOwnership")}</Row>
-          <Row>{RequiredBoolean(this, "Restore File Permissions", "restorePermissions")}</Row>
-          <Row>{RequiredBoolean(this, "Restore File Modification Time", "restoreModTimes")}</Row>
-          <Row>{RequiredBoolean(this, "Overwrite Files", "overwriteFiles")}</Row>
-          <Row>{RequiredBoolean(this, "Overwrite Directories", "overwriteDirectories")}</Row>
-          <Row>{RequiredBoolean(this, "Overwrite Symbolic Links", "overwriteSymlinks")}</Row>
-          <Row>{RequiredBoolean(this, "Write files atomically", "writeFilesAtomically")}</Row>
-          <Row>{RequiredBoolean(this, "Write Sparse Files", "writeSparseFiles")}</Row>
+          <Row>{RequiredBoolean(this, "Restaurar dono do arquivo", "restoreOwnership")}</Row>
+          <Row>{RequiredBoolean(this, "Restaurar permissões do arquivo", "restorePermissions")}</Row>
+          <Row>{RequiredBoolean(this, "Restaurar data de modificação", "restoreModTimes")}</Row>
+          <Row>{RequiredBoolean(this, "Sobrescrever arquivos", "overwriteFiles")}</Row>
+          <Row>{RequiredBoolean(this, "Sobrescrever pastas", "overwriteDirectories")}</Row>
+          <Row>{RequiredBoolean(this, "Sobrescrever atalhos (symlinks)", "overwriteSymlinks")}</Row>
+          <Row>{RequiredBoolean(this, "Gravar arquivos de forma atômica", "writeFilesAtomically")}</Row>
+          <Row>{RequiredBoolean(this, "Gravar arquivos esparsos", "writeSparseFiles")}</Row>
           <Row>
             <Col>
               <hr />
             </Col>
           </Row>
           <Row>
-            {RequiredNumberField(this, "Shallow Restore At Depth", "restoreDirEntryAtDepth")}
-            {RequiredNumberField(this, "Minimal File Size For Shallow Restore", "minSizeForPlaceholder")}
+            {RequiredNumberField(this, "Restauração superficial a partir da profundidade", "restoreDirEntryAtDepth")}
+            {RequiredNumberField(this, "Tamanho mínimo de arquivo p/ restauração superficial", "minSizeForPlaceholder")}
           </Row>
           <Row>
             <Col>
@@ -157,9 +157,9 @@ export class SnapshotRestoreInternal extends Component {
           <Row>
             {RequiredBoolean(
               this,
-              "Disable ZIP compression",
+              "Desativar compressão ZIP",
               "uncompressedZip",
-              "Do not compress when restoring to a ZIP file (faster).",
+              "Não comprimir ao restaurar para um arquivo ZIP (mais rápido).",
             )}
           </Row>
           <Row>
@@ -170,7 +170,7 @@ export class SnapshotRestoreInternal extends Component {
           <Row>
             <Col>
               <Button variant="primary" type="submit" data-testid="submit-button">
-                Begin Restore
+                Iniciar restauração
               </Button>
             </Col>
           </Row>

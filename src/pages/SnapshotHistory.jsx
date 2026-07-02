@@ -366,7 +366,7 @@ class SnapshotHistoryInternal extends Component {
     const columns = [
       {
         id: "selected",
-        header: "Selected",
+        header: "Sel.",
         width: 20,
         align: "center",
         cell: (x) => (
@@ -382,7 +382,7 @@ class SnapshotHistoryInternal extends Component {
       },
       {
         id: "startTime",
-        header: "Start time",
+        header: "Data / hora",
         width: 200,
         cell: (x) => {
           let timestamp = rfc3339TimestampForDisplay(x.row.original.startTime);
@@ -416,7 +416,7 @@ class SnapshotHistoryInternal extends Component {
         ),
       },
       {
-        header: "Retention",
+        header: "Retenção",
         accessorFn: (x) => x.retention,
         width: "",
         cell: (x) => (
@@ -438,18 +438,18 @@ class SnapshotHistoryInternal extends Component {
         ),
       },
       {
-        header: "Size",
+        header: "Tamanho",
         accessorFn: (x) => x.summary?.size ?? 0,
         width: 100,
         cell: (x) => sizeWithFailures(x.cell.getValue(), x.row.original.summary, bytesStringBase2),
       },
       {
-        header: "Files",
+        header: "Arquivos",
         accessorFn: (x) => x.summary?.files ?? 0,
         width: 100,
       },
       {
-        header: "Dirs",
+        header: "Pastas",
         accessorFn: (x) => x.summary?.dirs ?? 0,
         width: 100,
       },
@@ -466,11 +466,11 @@ class SnapshotHistoryInternal extends Component {
             {snapshots.length > 0 &&
               (selectedElements.length < snapshots.length ? (
                 <Button size="sm" variant="primary" onClick={this.selectAll}>
-                  Select All
+                  Selecionar todas
                 </Button>
               ) : (
                 <Button size="sm" variant="primary" onClick={this.deselectAll}>
-                  Deselect All
+                  Limpar seleção
                 </Button>
               ))}
             &nbsp;
@@ -478,7 +478,7 @@ class SnapshotHistoryInternal extends Component {
               <>
                 &nbsp;
                 <Button size="sm" variant="danger" onClick={this.showDeleteConfirm}>
-                  Delete Selected ({selectedElements.length})
+                  Excluir selecionadas ({selectedElements.length})
                 </Button>
               </>
             )}
@@ -486,7 +486,7 @@ class SnapshotHistoryInternal extends Component {
               <>
                 &nbsp;
                 <Button size="sm" variant="danger" onClick={this.deleteSnapshotSource}>
-                  Delete Snapshot Source
+                  Excluir origem das cópias
                 </Button>
               </>
             )}
@@ -497,7 +497,7 @@ class SnapshotHistoryInternal extends Component {
               {this.state.isRefreshing ? (
                 <Spinner animation="border" variant="light" size="sm" />
               ) : (
-                <FontAwesomeIcon icon={faSync} title="Fetch snapshots" onClick={this.fetchSnapshots} />
+                <FontAwesomeIcon icon={faSync} title="Atualizar cópias" onClick={this.fetchSnapshots} />
               )}
             </Button>
           </Col>
@@ -505,11 +505,11 @@ class SnapshotHistoryInternal extends Component {
         <Row>
           <Col>
             <div className="vpadded">
-              Displaying{" "}
+              Mostrando{" "}
               {snapshots.length !== unfilteredCount
-                ? snapshots.length + " out of " + unfilteredCount
+                ? snapshots.length + " de " + unfilteredCount
                 : snapshots.length}{" "}
-              snapshots of&nbsp;
+              cópias de&nbsp;
               <b>
                 {this.state.userName}@{this.state.host}:{this.state.path}
               </b>
@@ -524,7 +524,7 @@ class SnapshotHistoryInternal extends Component {
                   <Form.Check
                     type="checkbox"
                     checked={this.state.showHidden}
-                    label={"Show " + unfilteredCount + " individual snapshots"}
+                    label={"Mostrar " + unfilteredCount + " cópias individuais"}
                     onChange={this.toggleShowHidden}
                   />
                 </Form.Group>
@@ -544,23 +544,23 @@ class SnapshotHistoryInternal extends Component {
 
         <Modal show={this.state.showDeleteConfirmationDialog} onHide={this.cancelDelete}>
           <Modal.Header closeButton>
-            <Modal.Title>Confirm Delete</Modal.Title>
+            <Modal.Title>Confirmar exclusão</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
             <>
               {selectedElements.length > 1 ? (
                 <p>
-                  Do you want to delete the selected <b>{selectedElements.length} snapshots</b>?
+                  Deseja excluir as <b>{selectedElements.length} cópias</b> selecionadas?
                 </p>
               ) : (
-                <p>Do you want to delete the selected snapshot?</p>
+                <p>Deseja excluir a cópia selecionada?</p>
               )}
               {selectedElements.length === snapshots.length && (
                 <Row>
                   <Form.Group>
                     <Form.Check
-                      label="Wipe all snapshots and the policy for this source."
+                      label="Apagar todas as cópias e a política desta origem."
                       className="required"
                       checked={this.state.alsoDeleteSource}
                       onChange={() =>
@@ -578,22 +578,22 @@ class SnapshotHistoryInternal extends Component {
 
           <Modal.Footer>
             <Button size="sm" variant="primary" onClick={this.deleteSelectedSnapshots}>
-              Delete
+              Excluir
             </Button>
             <Button size="sm" variant="warning" onClick={this.cancelDelete}>
-              Cancel
+              Cancelar
             </Button>
           </Modal.Footer>
         </Modal>
 
         <Modal show={!!this.state.editingDescriptionFor} onHide={this.cancelSnapshotDescription}>
           <Modal.Header closeButton>
-            <Modal.Title>Snapshot Description</Modal.Title>
+            <Modal.Title>Descrição da cópia</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
             <Form.Group>
-              <Form.Label>Enter new description</Form.Label>
+              <Form.Label>Digite a nova descrição</Form.Label>
               <Form.Control
                 as="textarea"
                 size="sm"
@@ -611,27 +611,27 @@ class SnapshotHistoryInternal extends Component {
               disabled={this.state.originalSnapshotDescription === this.state.updatedSnapshotDescription}
               onClick={this.saveSnapshotDescription}
             >
-              Update Description
+              Atualizar descrição
             </Button>
             {this.state.originalSnapshotDescription && (
               <Button size="sm" variant="secondary" onClick={this.removeSnapshotDescription}>
-                Remove Description
+                Remover descrição
               </Button>
             )}
             <Button size="sm" variant="warning" onClick={this.cancelSnapshotDescription}>
-              Cancel
+              Cancelar
             </Button>
           </Modal.Footer>
         </Modal>
 
         <Modal show={!!this.state.editPinFor} onHide={this.cancelPin}>
           <Modal.Header closeButton>
-            <Modal.Title>Pin Snapshot</Modal.Title>
+            <Modal.Title>Fixar cópia</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
             <Form.Group>
-              <Form.Label>Name of the pin</Form.Label>
+              <Form.Label>Nome da marcação</Form.Label>
               <Form.Control
                 size="sm"
                 value={this.state.newPinName}
@@ -648,15 +648,15 @@ class SnapshotHistoryInternal extends Component {
               onClick={this.savePin}
               disabled={this.state.newPinName === this.state.originalPinName || !this.state.newPinName}
             >
-              {this.state.originalPinName ? "Update Pin" : "Add Pin"}
+              {this.state.originalPinName ? "Atualizar marcação" : "Fixar"}
             </Button>
             {this.state.originalPinName && (
               <Button size="sm" variant="secondary" onClick={() => this.removePin(this.state.originalPinName)}>
-                Remove Pin
+                Remover marcação
               </Button>
             )}
             <Button size="sm" variant="warning" onClick={this.cancelPin}>
-              Cancel
+              Cancelar
             </Button>
           </Modal.Footer>
         </Modal>

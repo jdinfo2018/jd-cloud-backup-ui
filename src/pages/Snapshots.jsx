@@ -18,8 +18,8 @@ import { policyEditorURL, sourceQueryStringParams } from "../utils/policyutil";
 import { CLIEquivalent } from "../components/CLIEquivalent";
 import { UIPreferencesContext } from "../contexts/UIPreferencesContext";
 
-const localSnapshots = "Local Snapshots";
-const allSnapshots = "All Snapshots";
+const localSnapshots = "Cópias locais";
+const allSnapshots = "Todas as cópias";
 
 export class Snapshots extends Component {
   constructor() {
@@ -123,7 +123,7 @@ export class Snapshots extends Component {
     switch (x.cell.getValue()) {
       case "IDLE":
       case "PAUSED":
-        return (x.cell.column.Header = "Actions");
+        return (x.cell.column.Header = "Ações");
       case "PENDING":
       case "UPLOADING":
         return (x.cell.column.Header = "Status");
@@ -151,7 +151,7 @@ export class Snapshots extends Component {
               variant="primary"
               size="sm"
             >
-              Policy
+              Política
             </Button>
             <Button
               data-testid="snapshot-now"
@@ -161,7 +161,7 @@ export class Snapshots extends Component {
                 parent.startSnapshot(x.row.original.source);
               }}
             >
-              Snapshot Now
+              Copiar agora
             </Button>
           </>
         );
@@ -174,9 +174,9 @@ export class Snapshots extends Component {
               animation="border"
               variant="secondary"
               size="sm"
-              title="Snapshot will start after the previous snapshot completes"
+              title="A cópia vai começar quando a anterior terminar"
             />
-            &nbsp;Pending
+            &nbsp;Na fila
           </>
         );
 
@@ -217,7 +217,7 @@ export class Snapshots extends Component {
             <Spinner data-testid="snapshot-uploading" animation="border" variant="primary" size="sm" title={title} />
             &nbsp;{totals}
             &nbsp;
-            {x.row.original.currentTask && <Link to={"/tasks/" + x.row.original.currentTask}>Details</Link>}
+            {x.row.original.currentTask && <Link to={"/tasks/" + x.row.original.currentTask}>Detalhes</Link>}
           </>
         );
       }
@@ -252,7 +252,7 @@ export class Snapshots extends Component {
   nextSnapshotTimeCell(x) {
     if (!x.cell.getValue()) {
       if (x.row.original.status === "PAUSED") {
-        return "paused";
+        return "pausado";
       }
 
       return "";
@@ -268,7 +268,7 @@ export class Snapshots extends Component {
         {moment(x.cell.getValue()).isBefore(moment()) && (
           <>
             &nbsp;
-            <Badge bg="secondary">overdue</Badge>
+            <Badge bg="secondary">atrasado</Badge>
           </>
         )}
       </p>
@@ -312,7 +312,7 @@ export class Snapshots extends Component {
     const columns = [
       {
         id: "path",
-        header: "Path",
+        header: "Pasta / Caminho",
         accessorFn: (x) => x.source,
         sortType: (a, b) => {
           const v = compare(a.original.source.path, b.original.source.path);
@@ -331,13 +331,13 @@ export class Snapshots extends Component {
       },
       {
         id: "owner",
-        header: "Owner",
+        header: "Dono",
         accessorFn: (x) => x.source.userName + "@" + x.source.host,
         width: 250,
       },
       {
         id: "lastSnapshotSize",
-        header: "Size",
+        header: "Tamanho",
         width: 120,
         accessorFn: (x) => x.lastSnapshot?.stats?.totalSize ?? 0,
         cell: (x) =>
@@ -345,7 +345,7 @@ export class Snapshots extends Component {
       },
       {
         id: "lastSnapshotTime",
-        header: "Last Snapshot",
+        header: "Última cópia",
         width: 160,
         accessorFn: (x) => (x.lastSnapshot ? x.lastSnapshot.startTime : null),
         cell: (x) =>
@@ -357,7 +357,7 @@ export class Snapshots extends Component {
       },
       {
         id: "nextSnapshotTime",
-        header: "Next Snapshot",
+        header: "Próxima cópia",
         width: 160,
         accessorFn: (x) => x.nextSnapshotTime,
         cell: (x) => this.nextSnapshotTimeCell(x),
@@ -400,12 +400,12 @@ export class Snapshots extends Component {
             )}
             <Col xs="auto">
               <Button data-testid="new-snapshot" size="sm" variant="primary" href="/snapshots/new">
-                New Snapshot
+                Nova cópia
               </Button>
             </Col>
             <Col></Col>
             <Col xs="auto">
-              <Button size="sm" title="Synchronize" variant="primary">
+              <Button size="sm" title="Sincronizar" variant="primary">
                 {this.state.isRefreshing ? (
                   <Spinner animation="border" variant="light" size="sm" />
                 ) : (

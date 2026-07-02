@@ -45,34 +45,34 @@ export function DirectoryItems({ historyState, items }) {
   const columns = [
     {
       id: "name",
-      header: "Name",
+      header: "Nome",
       width: "",
       cell: (x) => directoryLinkOrDownload(x.row.original, historyState),
     },
     {
       id: "mtime",
       accessorFn: (x) => x.mtime,
-      header: "Last Modification",
+      header: "Última modificação",
       width: 200,
       cell: (x) => rfc3339TimestampForDisplay(x.cell.getValue()),
     },
     {
       id: "size",
       accessorFn: (x) => sizeInfo(x),
-      header: "Size",
+      header: "Tamanho",
       width: 100,
       cell: (x) => sizeWithFailures(x.cell.getValue(), x.row.original.summ, bytesStringBase2),
     },
     {
       id: "files",
       accessorFn: (x) => (x.summ ? x.summ.files : undefined),
-      header: "Files",
+      header: "Arquivos",
       width: 100,
     },
     {
       id: "dirs",
       accessorFn: (x) => (x.summ ? x.summ.dirs : undefined),
-      header: "Directories",
+      header: "Pastas",
       width: 100,
     },
   ];

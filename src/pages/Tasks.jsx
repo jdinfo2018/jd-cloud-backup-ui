@@ -104,12 +104,12 @@ export class Tasks extends Component {
       return <p>{error.message}</p>;
     }
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return <p>Carregando ...</p>;
     }
 
     const columns = [
       {
-        header: "Start Time",
+        header: "Início",
         width: 160,
         cell: (x) => (
           <Link to={"/tasks/" + x.row.original.id} title={moment(x.row.original.startTime).toLocaleString()}>
@@ -123,12 +123,12 @@ export class Tasks extends Component {
         cell: (x) => taskStatusSymbol(x.row.original),
       },
       {
-        header: "Kind",
+        header: "Tipo",
         width: "",
         cell: (x) => <p>{x.row.original.kind}</p>,
       },
       {
-        header: "Description",
+        header: "Descrição",
         width: "",
         cell: (x) => <p>{x.row.original.description}</p>,
       },
@@ -144,23 +144,23 @@ export class Tasks extends Component {
               <Col xs="auto">
                 <Dropdown>
                   <Dropdown.Toggle size="sm" variant="primary">
-                    Status: {this.state.showStatus}
+                    Status: {{ All: "Todos", Running: "Em andamento", Failed: "Com falha" }[this.state.showStatus] || this.state.showStatus}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => this.setState({ showStatus: "All" })}>All</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.setState({ showStatus: "All" })}>Todos</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item onClick={() => this.setState({ showStatus: "Running" })}>Running</Dropdown.Item>
-                    <Dropdown.Item onClick={() => this.setState({ showStatus: "Failed" })}>Failed</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.setState({ showStatus: "Running" })}>Em andamento</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.setState({ showStatus: "Failed" })}>Com falha</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
               <Col xs="auto">
                 <Dropdown>
                   <Dropdown.Toggle size="sm" variant="primary">
-                    Kind: {this.state.showKind}
+                    Tipo: {this.state.showKind === "All" ? "Todos" : this.state.showKind}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => this.setState({ showKind: "All" })}>All</Dropdown.Item>
+                    <Dropdown.Item onClick={() => this.setState({ showKind: "All" })}>Todos</Dropdown.Item>
                     <Dropdown.Divider />
                     {this.state.uniqueKinds.map((k) => (
                       <Dropdown.Item key={k} onClick={() => this.setState({ showKind: k })}>
@@ -175,7 +175,7 @@ export class Tasks extends Component {
                   size="sm"
                   type="text"
                   name="searchDescription"
-                  placeholder="case-sensitive search description"
+                  placeholder="buscar na descrição (diferencia maiúsculas)"
                   value={this.state.searchDescription}
                   onChange={this.handleChange}
                   autoFocus={true}
@@ -187,8 +187,8 @@ export class Tasks extends Component {
             <Col>
               {!items.length ? (
                 <Alert variant="info">
-                  <FontAwesomeIcon size="sm" icon={faInfoCircle} /> A list of tasks will appear here when you create
-                  snapshots, restore, run maintenance, etc.
+                  <FontAwesomeIcon size="sm" icon={faInfoCircle} /> A lista de tarefas aparece aqui quando você faz
+                  cópias, restaura ou roda manutenção, etc.
                 </Alert>
               ) : (
                 <KopiaTable data={filteredItems} columns={columns} />

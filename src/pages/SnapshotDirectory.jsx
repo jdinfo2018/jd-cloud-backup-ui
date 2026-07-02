@@ -112,7 +112,7 @@ class SnapshotDirectoryInternal extends Component {
 
   browseMounted() {
     if (!window.kopiaUI) {
-      alert("Directory browsing is not supported in a web browser. Use Kopia UI.");
+      alert("A navegação por pastas não é suportada no navegador. Use o aplicativo JD Cloud Backup.");
       return;
     }
 
@@ -134,7 +134,7 @@ class SnapshotDirectoryInternal extends Component {
   render() {
     let { items, isLoading, error } = this.state;
     if (error) {
-      return <p>ERROR: {error.message}</p>;
+      return <p>ERRO: {error.message}</p>;
     }
     if (isLoading) {
       return <Spinner animation="border" variant="primary" />;
@@ -148,12 +148,12 @@ class SnapshotDirectoryInternal extends Component {
             {this.state.mountInfo.path ? (
               <>
                 <Button size="sm" variant="secondary" onClick={this.unmount}>
-                  Unmount
+                  Desmontar
                 </Button>
                 {window.kopiaUI && (
                   <>
                     <Button size="sm" variant="secondary" onClick={this.browseMounted}>
-                      Browse
+                      Navegar
                     </Button>
                   </>
                 )}
@@ -169,18 +169,18 @@ class SnapshotDirectoryInternal extends Component {
             ) : (
               <>
                 <Button size="sm" variant="secondary" onClick={this.mount}>
-                  Mount as Local Filesystem
+                  Montar como pasta local
                 </Button>
               </>
             )}
             &nbsp;
             <Button size="sm" variant="primary" href={"/snapshots/dir/" + this.props.params.oid + "/restore"}>
-              Restore Files & Directories
+              Restaurar arquivos e pastas
             </Button>
             &nbsp;
           </Col>
           <Col xs={12} md={6}>
-            You can mount/restore all the files & directories that you see below or restore files individually.
+            Você pode montar/restaurar todos os arquivos e pastas abaixo, ou restaurar arquivos individualmente.
           </Col>
         </Row>
         <Row>

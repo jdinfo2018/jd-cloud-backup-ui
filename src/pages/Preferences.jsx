@@ -17,43 +17,43 @@ export function Preferences() {
 
   return (
     <Tabs defaultActiveKey="appearance" id="preferences" className="mb-3">
-      <Tab eventKey="appearance" title="Appearance" id="tab-appearance">
+      <Tab eventKey="appearance" title="Aparência" id="tab-appearance">
         <Container fluid>
           <Row>
             <Form.Group as={Col} controlId="theme">
-              <Form.Label className="required">Theme</Form.Label>
+              <Form.Label className="required">Tema</Form.Label>
               <select
                 className="form-select form-select-sm"
-                title="Select theme"
+                title="Selecionar tema"
                 id="themeSelector"
                 value={theme}
                 onChange={(e) => setTheme(e.target.value)}
               >
-                <option value="light">light</option>
-                <option value="dark">dark</option>
+                <option value="light">claro</option>
+                <option value="dark">escuro</option>
                 <option value="pastel">pastel</option>
-                <option value="ocean">ocean</option>
+                <option value="ocean">oceano</option>
               </select>
             </Form.Group>
             <Form.Group as={Col} controlId="appearance">
-              <Form.Label className="required">Appearance</Form.Label>
+              <Form.Label className="required">Tamanho da fonte</Form.Label>
               <select
                 className="form-select form-select-sm"
-                title="Select font size"
+                title="Selecionar tamanho da fonte"
                 id="fontSizeInput"
                 value={fontSize}
                 onChange={(e) => setFontSize(e.target.value)}
               >
-                <option value="fs-6">small</option>
-                <option value="fs-5">medium</option>
-                <option value="fs-4">large</option>
+                <option value="fs-6">pequeno</option>
+                <option value="fs-5">médio</option>
+                <option value="fs-4">grande</option>
               </select>
             </Form.Group>
             <Form.Group as={Col} controlId="byteRepresentation">
-              <Form.Label className="required">Byte representation</Form.Label>
+              <Form.Label className="required">Representação de bytes</Form.Label>
               <select
                 className="form-select form-select-sm"
-                title="Select byte representation"
+                title="Selecionar representação de bytes"
                 id="bytesBaseInput"
                 value={bytesStringBase2}
                 onChange={(e) => setByteStringBase(e.target.value)}
@@ -65,7 +65,7 @@ export function Preferences() {
           </Row>
         </Container>
       </Tab>
-      <Tab eventKey="notifications" title="Notifications" id="tab-notifications">
+      <Tab eventKey="notifications" title="Notificações" id="tab-notifications">
         <div className="tab-content-fix">
           <Container fluid>
             <NotificationEditor />
