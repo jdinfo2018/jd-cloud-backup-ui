@@ -129,7 +129,7 @@ export default class App extends Component {
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/snapshots"
                     >
-                      Snapshots
+                      Cópias
                     </NavLink>
                   </span>
                   <span className="d-inline-block" data-toggle="tooltip" title="Repositório não conectado">
@@ -140,7 +140,7 @@ export default class App extends Component {
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/policies"
                     >
-                      Policies
+                      Políticas
                     </NavLink>
                   </span>
                   <span className="d-inline-block" data-toggle="tooltip" title="Repositório não conectado">
@@ -151,12 +151,12 @@ export default class App extends Component {
                       className={isRepositoryConnected ? "nav-link" : "nav-link disabled"}
                       to="/tasks"
                     >
-                      Tasks
+                      Tarefas
                       <>{runningTaskCount > 0 && <>({runningTaskCount})</>}</>
                     </NavLink>
                   </span>
                   <NavLink data-testid="tab-repo" data-title="Repositório" className="nav-link" to="/repo">
-                    Repository
+                    Repositório
                   </NavLink>
                   <NavLink
                     data-testid="tab-preferences"
@@ -164,7 +164,7 @@ export default class App extends Component {
                     className="nav-link"
                     to="/preferences"
                   >
-                    Preferences
+                    Preferências
                   </NavLink>
                 </Nav>
               </Navbar.Collapse>
