@@ -10,8 +10,8 @@ export function ActionRowMode(component, action) {
   return (
     <Row>
       <LabelColumn
-        name="Command Mode"
-        help="Essential (must succeed; default behavior), optional (failures are tolerated), or async (Kopia will start the action but not wait for it to finish)"
+        name="Modo do comando"
+        help="Essencial (precisa ter sucesso; padrão), opcional (falhas são toleradas) ou assíncrono (o JD Cloud Backup inicia a ação mas não espera terminar)"
       />
       <WideValueColumn>
         <Form.Control
@@ -21,9 +21,9 @@ export function ActionRowMode(component, action) {
           onChange={component.handleChange}
           value={stateProperty(component, "policy." + action)}
         >
-          <option value="essential">must succeed</option>
-          <option value="optional">ignore failures</option>
-          <option value="async">run asynchronously, ignore failures</option>
+          <option value="essential">precisa ter sucesso</option>
+          <option value="optional">ignorar falhas</option>
+          <option value="async">executar em segundo plano, ignorar falhas</option>
         </Form.Control>
       </WideValueColumn>
       {EffectiveValue(component, action)}

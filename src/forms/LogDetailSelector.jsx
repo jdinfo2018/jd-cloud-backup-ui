@@ -11,18 +11,18 @@ export function LogDetailSelector(component, name) {
       onChange={(e) => component.handleChange(e, valueToNumber)}
       value={stateProperty(component, name)}
     >
-      <option value="">(inherit from parent)</option>
-      <option value="0">0 - no output</option>
-      <option value="1">1 - minimal details</option>
+      <option value="">(herdar do nível acima)</option>
+      <option value="0">0 - sem saída</option>
+      <option value="1">1 - detalhes mínimos</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      <option value="5">5 - normal details</option>
+      <option value="5">5 - detalhes normais</option>
       <option value="6">6</option>
       <option value="7">7</option>
       <option value="8">8</option>
       <option value="9">9</option>
-      <option value="10">10 - maximum details</option>
+      <option value="10">10 - detalhes máximos</option>
     </Form.Control>
   );
 }

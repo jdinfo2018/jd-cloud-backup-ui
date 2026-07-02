@@ -9,10 +9,10 @@ export function SectionHeaderRow() {
     <Row>
       <LabelColumn />
       <ValueColumn>
-        <div className="policyEditorHeader">Defined</div>
+        <div className="policyEditorHeader">Definido</div>
       </ValueColumn>
       <EffectiveValueColumn>
-        <div className="policyEditorHeader">Effective</div>
+        <div className="policyEditorHeader">Em vigor</div>
       </EffectiveValueColumn>
     </Row>
   );

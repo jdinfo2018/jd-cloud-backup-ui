@@ -27,8 +27,8 @@ export function OptionalBoolean(component, label, name, defaultLabel) {
         as="select"
       >
         <option value="">{defaultLabel}</option>
-        <option value="true">yes</option>
-        <option value="false">no</option>
+        <option value="true">sim</option>
+        <option value="false">não</option>
       </Form.Control>
     </Form.Group>
   );

@@ -14,12 +14,12 @@ export function UpcomingSnapshotTimes(resolved) {
   const times = resolved.upcomingSnapshotTimes;
 
   if (!times) {
-    return <LabelColumn name="No upcoming snapshots" />;
+    return <LabelColumn name="Nenhuma cópia agendada" />;
   }
 
   return (
     <>
-      <LabelColumn name-="Upcoming" />
+      <LabelColumn name-="Próximas" />
 
       <ul data-testid="upcoming-snapshot-times">
         {times.map((x) => (

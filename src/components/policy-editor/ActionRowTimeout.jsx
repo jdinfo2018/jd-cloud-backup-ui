@@ -8,7 +8,7 @@ import { EffectiveValue } from "./EffectiveValue";
 export function ActionRowTimeout(component, action) {
   return (
     <Row>
-      <LabelColumn name="Timeout" help="Timeout in seconds before Kopia kills the process" />
+      <LabelColumn name="Tempo limite" help="Tempo limite em segundos antes de o JD Cloud Backup encerrar o processo" />
       <WideValueColumn>{OptionalNumberField(component, "", "policy." + action, {})}</WideValueColumn>
       {EffectiveValue(component, action)}
     </Row>

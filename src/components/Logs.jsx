@@ -111,7 +111,7 @@ export class Logs extends Component {
       return <p>{error.message}</p>;
     }
     if (isLoading) {
-      return <p>Loading ...</p>;
+      return <p>Carregando ...</p>;
     }
 
     if (logs) {
