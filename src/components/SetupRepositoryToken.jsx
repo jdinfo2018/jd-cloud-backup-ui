@@ -25,7 +25,7 @@ export class SetupRepositoryToken extends Component {
           {RequiredField(this, "Token", "token", {
             autoFocus: true,
             type: "password",
-            placeholder: "paste connection token",
+            placeholder: "cole o token de conexão",
           })}
         </Row>
       </>

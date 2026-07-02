@@ -22,14 +22,14 @@ export class SetupRepositoryServer extends Component {
     return (
       <>
         <Row>
-          {RequiredField(this, "Server address", "url", {
+          {RequiredField(this, "Endereço do servidor", "url", {
             autoFocus: true,
-            placeholder: "enter server URL (https://<host>:port)",
+            placeholder: "digite a URL do servidor (https://<host>:porta)",
           })}
         </Row>
         <Row>
-          {OptionalField(this, "Trusted server certificate fingerprint (SHA256)", "serverCertFingerprint", {
-            placeholder: "enter trusted server certificate fingerprint printed at server startup",
+          {OptionalField(this, "Impressão digital do certificado confiável (SHA256)", "serverCertFingerprint", {
+            placeholder: "cole a impressão digital do certificado exibida ao iniciar o servidor",
           })}
         </Row>
       </>

@@ -27,7 +27,7 @@ import { toAlgorithmOption } from "../utils/uiutil";
 const supportedProviders = [
   {
     provider: "filesystem",
-    description: "Local Directory or NAS",
+    description: "Pasta local ou NAS",
     component: SetupRepositoryFilesystem,
   },
   {
@@ -37,7 +37,7 @@ const supportedProviders = [
   },
   {
     provider: "s3",
-    description: "Amazon S3 or Compatible Storage",
+    description: "Amazon S3 ou compatível",
     component: SetupRepositoryS3,
   },
   { provider: "b2", description: "Backblaze B2", component: SetupRepositoryB2 },
@@ -48,27 +48,27 @@ const supportedProviders = [
   },
   {
     provider: "sftp",
-    description: "SFTP Server",
+    description: "Servidor SFTP",
     component: SetupRepositorySFTP,
   },
   {
     provider: "rclone",
-    description: "Rclone Remote",
+    description: "Remoto Rclone",
     component: SetupRepositoryRclone,
   },
   {
     provider: "webdav",
-    description: "WebDAV Server",
+    description: "Servidor WebDAV",
     component: SetupRepositoryWebDAV,
   },
   {
     provider: "_server",
-    description: "Kopia Repository Server",
+    description: "Servidor JD Cloud Backup",
     component: SetupRepositoryServer,
   },
   {
     provider: "_token",
-    description: "Use Repository Token",
+    description: "Usar token do repositório",
     component: SetupRepositoryToken,
   },
 ];
@@ -83,7 +83,7 @@ export class SetupRepository extends Component {
       showAdvanced: false,
       storageVerified: false,
       providerSettings: {},
-      description: "My Repository",
+      description: "Meu repositório",
       formatVersion: "2",
     };
 
@@ -142,7 +142,7 @@ export class SetupRepository extends Component {
       }
 
       if (valid && this.state.password !== this.state.confirmPassword) {
-        alert("Passwords don't match");
+        alert("As senhas não conferem");
         return false;
       }
     }
@@ -265,8 +265,8 @@ export class SetupRepository extends Component {
   renderProviderSelection() {
     return (
       <>
-        <h3>Select Storage Type</h3>
-        <p>To connect to a repository or create one, select the preferred storage type:</p>
+        <h3>Escolha o tipo de armazenamento</h3>
+        <p>Para conectar a um repositório ou criar um novo, escolha o tipo de armazenamento:</p>
         <Row>
           {supportedProviders.map((x) => (
             <Button
@@ -356,9 +356,9 @@ export class SetupRepository extends Component {
 
     return (
       <Form onSubmit={this.verifyStorage}>
-        {!this.state.provider.startsWith("_") && <h3>Storage Configuration</h3>}
-        {this.state.provider === "_token" && <h3>Enter Repository Token</h3>}
-        {this.state.provider === "_server" && <h3>Kopia Server Parameters</h3>}
+        {!this.state.provider.startsWith("_") && <h3>Configuração do armazenamento</h3>}
+        {this.state.provider === "_token" && <h3>Informe o token do repositório</h3>}
+        {this.state.provider === "_server" && <h3>Parâmetros do servidor JD Cloud Backup</h3>}
         <SelectedProvider ref={this.optionsEditor} initial={this.state.providerSettings} />
         {this.connectionErrorInfo()}
         <hr />
@@ -373,11 +373,11 @@ export class SetupRepository extends Component {
             })
           }
         >
-          Back
+          Voltar
         </Button>
         &nbsp;
         <Button variant="primary" type="submit" data-testid="submit-button">
-          Next
+          Avançar
         </Button>
         {this.loadingSpinner()}
       </Form>
@@ -387,7 +387,7 @@ export class SetupRepository extends Component {
   toggleAdvancedButton() {
     // Determine button icon and text based upon component state.
     const icon = this.state.showAdvanced ? faAngleDoubleUp : faAngleDoubleDown;
-    const text = this.state.showAdvanced ? "Hide Advanced Options" : "Show Advanced Options";
+    const text = this.state.showAdvanced ? "Ocultar opções avançadas" : "Mostrar opções avançadas";
 
     return (
       <Button
@@ -407,23 +407,23 @@ export class SetupRepository extends Component {
   renderConfirmCreate() {
     return (
       <Form onSubmit={this.createRepository}>
-        <h3>Create New Repository</h3>
-        <p>Enter a strong password to create Kopia repository in the provided storage.</p>
+        <h3>Criar novo repositório</h3>
+        <p>Digite uma senha forte para criar o repositório JD Cloud Backup no armazenamento informado.</p>
         <Row>
           {RequiredField(
             this,
-            "Repository Password",
+            "Senha do repositório",
             "password",
             {
               autoFocus: true,
               type: "password",
-              placeholder: "enter repository password",
+              placeholder: "digite a senha do repositório",
             },
-            "Used to encrypt the repository's contents",
+            "Usada para criptografar o conteúdo do repositório",
           )}
-          {RequiredField(this, "Confirm Repository Password", "confirmPassword", {
+          {RequiredField(this, "Confirme a senha do repositório", "confirmPassword", {
             type: "password",
-            placeholder: "enter repository password again",
+            placeholder: "digite a senha do repositório de novo",
           })}
         </Row>
         <div style={{ marginTop: "1rem" }}>{this.toggleAdvancedButton()}</div>
@@ -431,7 +431,7 @@ export class SetupRepository extends Component {
           <div id="advanced-options-div" style={{ marginTop: "1rem" }}>
             <Row>
               <Form.Group as={Col}>
-                <Form.Label className="required">Encryption</Form.Label>
+                <Form.Label className="required">Criptografia</Form.Label>
                 <Form.Control
                   as="select"
                   name="encryption"
@@ -443,7 +443,7 @@ export class SetupRepository extends Component {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label className="required">Hash Algorithm</Form.Label>
+                <Form.Label className="required">Algoritmo de hash</Form.Label>
                 <Form.Control
                   as="select"
                   name="hash"
@@ -455,7 +455,7 @@ export class SetupRepository extends Component {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label className="required">Splitter</Form.Label>
+                <Form.Label className="required">Divisor (splitter)</Form.Label>
                 <Form.Control
                   as="select"
                   name="splitter"
@@ -469,7 +469,7 @@ export class SetupRepository extends Component {
             </Row>
             <Row>
               <Form.Group as={Col}>
-                <Form.Label className="required">Repository Format</Form.Label>
+                <Form.Label className="required">Formato do repositório</Form.Label>
                 <Form.Control
                   as="select"
                   name="formatVersion"
@@ -477,12 +477,12 @@ export class SetupRepository extends Component {
                   data-testid="control-formatVersion"
                   value={this.state.formatVersion}
                 >
-                  <option value="2">Latest format</option>
-                  <option value="1">Legacy format compatible with v0.8</option>
+                  <option value="2">Formato mais recente</option>
+                  <option value="1">Formato antigo, compatível com v0.8</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label className="required">Error Correction Overhead</Form.Label>
+                <Form.Label className="required">Sobrecarga de correção de erros</Form.Label>
                 <Form.Control
                   as="select"
                   name="eccOverheadPercent"
@@ -490,7 +490,7 @@ export class SetupRepository extends Component {
                   data-testid="control-eccOverheadPercent"
                   value={this.state.eccOverheadPercent}
                 >
-                  <option value="0">Disabled</option>
+                  <option value="0">Desativado</option>
                   <option value="1">1%</option>
                   <option value="2">2%</option>
                   <option value="5">5%</option>
@@ -498,7 +498,7 @@ export class SetupRepository extends Component {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="errorCorrectionAlgorithm">
-                <Form.Label className="required">Error Correction Algorithm</Form.Label>
+                <Form.Label className="required">Algoritmo de correção de erros</Form.Label>
                 <Form.Control
                   as="select"
                   name="ecc"
@@ -520,17 +520,17 @@ export class SetupRepository extends Component {
             <Row>
               <Col></Col>
               <Col sm={8} className="text-muted">
-                [EXPERIMENTAL] Error correction can help protect from certain kinds of data corruption due to
-                spontaneous bit flips in the storage media.{" "}
+                [EXPERIMENTAL] A correção de erros ajuda a proteger contra certos tipos de corrupção de dados causados
+                por falhas espontâneas de bits na mídia de armazenamento.{" "}
                 <a href="https://kopia.io/docs/advanced/ecc/" target="_blank" rel="noreferrer">
-                  Click here to learn more.
+                  Clique aqui para saber mais.
                 </a>
               </Col>
             </Row>
             {this.overrideUsernameHostnameRow()}
             <Row style={{ marginTop: "1rem" }}>
               <Form.Group as={Col}>
-                <Form.Text>Additional parameters can be set when creating repository using command line.</Form.Text>
+                <Form.Text>Parâmetros adicionais podem ser definidos ao criar o repositório pela linha de comando.</Form.Text>
               </Form.Group>
             </Row>
           </div>
@@ -542,11 +542,11 @@ export class SetupRepository extends Component {
           variant="warning"
           onClick={() => this.setState({ providerSettings: {}, storageVerified: false })}
         >
-          Back
+          Voltar
         </Button>
         &nbsp;
         <Button variant="primary" type="submit" data-testid="submit-button">
-          Create Repository
+          Criar repositório
         </Button>
         {this.loadingSpinner()}
       </Form>
@@ -558,17 +558,17 @@ export class SetupRepository extends Component {
       <Row>
         {RequiredField(
           this,
-          "Username",
+          "Usuário",
           "username",
           {},
-          "Override this when restoring a snapshot taken by another user",
+          "Altere isto ao restaurar uma cópia feita por outro usuário",
         )}
         {RequiredField(
           this,
-          "Hostname",
+          "Nome da máquina",
           "hostname",
           {},
-          "Override this when restoring a snapshot taken on another machine",
+          "Altere isto ao restaurar uma cópia feita em outra máquina",
         )}
       </Row>
     );
@@ -579,7 +579,7 @@ export class SetupRepository extends Component {
       this.state.connectError && (
         <Row>
           <Form.Group as={Col}>
-            <Form.Text className="error">Connect Error: {this.state.connectError}</Form.Text>
+            <Form.Text className="error">Erro de conexão: {this.state.connectError}</Form.Text>
           </Form.Group>
         </Row>
       )
@@ -589,12 +589,12 @@ export class SetupRepository extends Component {
   renderConfirmConnect() {
     return (
       <Form onSubmit={this.connectToRepository}>
-        <h3>Connect To Repository</h3>
+        <h3>Conectar ao repositório</h3>
         <Row>
           <Form.Group as={Col}>
-            <Form.Label className="required">Connect As</Form.Label>
+            <Form.Label className="required">Conectar como</Form.Label>
             <Form.Control value={this.state.username + "@" + this.state.hostname} readOnly={true} size="sm" />
-            <Form.Text className="text-muted">To override, click &apos;Show Advanced Options&apos;</Form.Text>
+            <Form.Text className="text-muted">Para alterar, clique em &apos;Mostrar opções avançadas&apos;</Form.Text>
           </Form.Group>
         </Row>
         <Row>
@@ -602,32 +602,32 @@ export class SetupRepository extends Component {
             this.state.provider !== "_server" &&
             RequiredField(
               this,
-              "Repository Password",
+              "Senha do repositório",
               "password",
               {
                 autoFocus: true,
                 type: "password",
-                placeholder: "enter repository password",
+                placeholder: "digite a senha do repositório",
               },
-              "Used to encrypt the repository's contents",
+              "Usada para criptografar o conteúdo do repositório",
             )}
           {this.state.provider === "_server" &&
-            RequiredField(this, "Server Password", "password", {
+            RequiredField(this, "Senha do servidor", "password", {
               autoFocus: true,
               type: "password",
-              placeholder: "enter password to connect to server",
+              placeholder: "digite a senha para conectar ao servidor",
             })}
         </Row>
         <Row>
           {RequiredField(
             this,
-            "Repository Description",
+            "Descrição do repositório",
             "description",
             {
               autoFocus: this.state.provider === "_token",
-              placeholder: "enter repository description",
+              placeholder: "digite a descrição do repositório",
             },
-            "Helps to distinguish between multiple connected repositories",
+            "Ajuda a distinguir entre vários repositórios conectados",
           )}
         </Row>
         {this.toggleAdvancedButton()}
@@ -636,9 +636,9 @@ export class SetupRepository extends Component {
             <Row>
               {RequiredBoolean(
                 this,
-                "Connect in read-only mode",
+                "Conectar em modo somente leitura",
                 "readonly",
-                "Read-only mode prevents any changes to the repository.",
+                "O modo somente leitura impede qualquer alteração no repositório.",
               )}
             </Row>
             {this.overrideUsernameHostnameRow()}
@@ -651,11 +651,11 @@ export class SetupRepository extends Component {
           variant="warning"
           onClick={() => this.setState({ providerSettings: {}, storageVerified: false })}
         >
-          Back
+          Voltar
         </Button>
         &nbsp;
         <Button variant="primary" type="submit" data-testid="submit-button">
-          Connect To Repository
+          Conectar ao repositório
         </Button>
         {this.loadingSpinner()}
       </Form>
