@@ -44,12 +44,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const av = document.getElementById("appVersion");
-    if (av) {
-      // show app version after mounting the component to avoid flashing of unstyled content.
-      av.style.display = "block";
-    }
-
+    // Rodapé de versão mantido oculto (JD Cloud Backup) — evita string técnica na tela.
     this.fetchInitialRepositoryDescription();
     this.taskSummaryInterval = window.setInterval(this.fetchTaskSummary, 5000);
   }
