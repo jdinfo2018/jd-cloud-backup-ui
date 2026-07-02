@@ -17,7 +17,7 @@ export function RequiredField(component, label, name, props = {}, helpText = nul
         {...props}
       />
       {helpText && <Form.Text className="text-muted">{helpText}</Form.Text>}
-      <Form.Control.Feedback type="invalid">Required field</Form.Control.Feedback>
+      <Form.Control.Feedback type="invalid">Campo obrigatório</Form.Control.Feedback>
     </Form.Group>
   );
 }

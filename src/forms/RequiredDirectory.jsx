@@ -50,7 +50,7 @@ export function RequiredDirectory(component, label, name, props = {}) {
             <FontAwesomeIcon icon={faFolderOpen} />
           </Button>
         )}
-        <Form.Control.Feedback type="invalid">Required field</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">Campo obrigatório</Form.Control.Feedback>
       </InputGroup>
     </FormGroup>
   );
